@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html style="scroll-behavior: smooth;">
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script>
+$(document).ready(function(){
+  // Add smooth scrolling to all links
+  $("a").on('click', function(event) {
+
+    // Make sure this.hash has a value before overriding default behavior
+    if (this.hash !== "") {
+      // Prevent default anchor click behavior
+      event.preventDefault();
+
+      // Store hash
+      var hash = this.hash;
+
+      // Using jQuery's animate() method to add smooth page scroll
+      // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+      $('html, body').animate({
+        scrollTop: $(hash).offset().top
+      }, 800, function(){
+   
+        // Add hash (#) to URL when done scrolling (default click behavior)
+        window.location.hash = hash;
+      });
+    } // End if
+  });
+});
+</script>
+<meta http-equiv="refresh" content="">
+<style>
+    
+@media print { html { display:none } }
+.filterDiv {
+  display:none; /* Hidden by default */
+    width:inherit;
+    
+}
+    .filterDiv:hover{
+        font-size:;
+        color:;
+        cursor:;
+    }
+    
+    #myBtnContainer{
+        display: flex;
+        background-color:navy;
+        height: inherit;
+        min-height: 40px;
+        width: auto;
+        z-index: 50;
+        position:;
+    }
+    #myInput{
+        outline: none;
+        float:;
+        margin-left:;
+        font-size: 15px;
+        padding: 5px 5px 5px 10px;
+        margin-top: 20px;
+        border-radius: 10px;
+        width:auto;
+        border: 2px solid navy;
+        
+    }
+.show {
+  display:flex;
+}
+    .divide{
+        flex-direction: row;
+        padding-top: 10px;
+        margin-top: 10px;
+    }
+
+.container {
+  width:30%;
+    background-color:;
+    font-size: 18px;
+    position: fixed;
+  color:black;
+  width:;
+line-height:20px;
+    border-bottom:;
+  min-height: 25px;
+  text-align: left;
+        font-style:;
+    display: flex;
+    flex-direction: column;
+    padding: 5px 5px 5px 5px;
+    
+}
+    .tags{
+        border: none;
+        background-color:;
+        cursor: pointer;
+        text-align: center;
+        color: dodgerblue;
+    }
+    #tags{
+        display: flex;
+        flex-direction: column-reverse;
+        flex-wrap: wrap;
+        
+    }
+
+    .container1 {
+ width:;
+        display:flex;
+        flex-wrap:wrap;
+        flex-direction:column;
+        margin-left:35%;
+        float: left;
+        padding-bottom: 20px;
+        justify-content:;
+        
+}
+
+    .posts{
+        font-size: 18px;
+        margin-top: 20px;
+        display:flex;
+        flex-direction:column;
+        flex-wrap:wrap;
+        width:;
+        min-width: 100px;
+        padding: 5px 10px 5px 10px;
+        border-radius: 10px;
+        z-index: 1;
+        box-shadow: 0px 5px 8px 0px rgba(0,0,0,0.2);
+        margin-right: 20px;
+        border-top: 3px solid navy;
+        min-height: 50px;
+        text-align: justify;
+    }
+/* Style the buttons */
+.btn {
+  border: none;
+  outline: none;
+  padding: 10px 12px;
+  background-color: navy;
+color: white;
+  cursor: pointer;
+    width: 7%;
+    display:;
+
+}
+    .footnotes{
+        background-color:;
+        opacity:;
+        font-size:15px;
+        color: dodgerblue;
+        width:inherit;
+        min-width: 30px;
+        border-radius: 15px;
+        padding: 5px 5px 5px 5px;
+        margin-bottom: -5px;
+        margin-top: 5px;
+        max-height: 20px;
+        float: left;
+    }
+
+.btn:hover {
+  background-color:;
+ font-size:;
+    letter-spacing: 1px;
+}
+
+.btn.active {
+  background-color:;
+  color: white;
+    font-size: 12px;
+    text-decoration: underline;
+}
+    #myBtn {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  z-index: 99;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  background-color: navy;
+  color: white;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 30px;
+}
+
+#myBtn:hover {
+    background-color: red;}
+/* width */
+::-webkit-scrollbar {
+  width: 8px;
+    display: none;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: dodgerblue; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+</style>
+    </head>
+<body onload="startTime()">
+
+<div id="myBtnContainer">
+  <button class="btn active" onclick="filterSelection('all')" style="display:;">Home</button>
+  <button class="btn" onclick="filterSelection('politics')">Politics</button>
+  <button class="btn" onclick="filterSelection('judiciary')">Sports</button>
+  <button class="btn" onclick="filterSelection('market')">Market</button>
+  <button class="btn" onclick="filterSelection('culture')">Culture</button>
+  <button class="btn" onclick="filterSelection('stories')">Stories</button>
+  <button class="btn" onclick="filterSelection('books')">Books</button>
+  <button class="btn" onclick="filterSelection('climate')">Climate</button>
+  <button class="btn" onclick="filterSelection('cosmos')">Cosmos</button>
+  <button class="btn" onclick="filterSelection('tech')">Tech</button>
+  <button class="btn" onclick="filterSelection('species')">Species</button>
+    <button class="btn" onclick="filterSelection('about')">Notebook</button>
+    <button class="btn" onclick="filterSelection('about')">About</button>
+    
+    
+</div>
+    <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+
+<div class="divide"> 
+    
+<div class="container" id="">
+    <div class="logo" style="font-family:cursive; font-size: 20px; border: none; color:navy; background-color:; border-right:; border-bottom-right-radius:; border-top-right-radius:; text-align: center;"><b>Zeboo</b></div>
+    <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()" autocomplete="off" autofocus="">
+     
+</div>
+
+<div class="container1" id="myDropdown">
+    <h5 style="font-size: 11px; color: #111; text-align: center;">Tags to read</h5>
+ <div id="tags" style="display: flex; flex-direction: row; flex-wrap: wrap; align-items: center;">
+    <div class="tags" style="display:; padding: 5px 5px 5px 5px;">#BMW is a super car</div>
+  <div class="" style="display:; padding: 5px 5px 5px 5px;">#Orange is a great color</div>
+    <div class="" style="display:; padding: 5px 5px 5px 5px;">#Volvo is a color as well as a car</div>
+    <div class="" style="display:; padding: 5px 5px 5px 5px;">#Red</div>
+    <div class="" style="display:; padding: 5px 5px 5px 5px;">#Red</div>
+    <div class="tags" onclick="filterSelection('juang')" style="display:; padding: 5px 5px 5px 5px;">#Juang</div>
+    <div class="tags" onclick="filterSelection('juang')" style="display:; padding: 5px 5px 5px 5px;">#Juang is here soo long</div>
+    </div>
+  <div class="filterDiv culture juang">
+    <a class="posts" id="">
+      <h4>Juang</h4>
+      Juang tribal people are found in Gonsaikha hills of Keonjhar district in Odisha state speaking Indo-austric language belonging to Munda family. Subdivided based on agricultural practice into two: The primitive group practicing shifting cultivation and advanced group practicing a normal agriculture.
+      <div class="footnotes">#Juang #Odisha #Gonsaikha #Munda</div>
+ </a>
+    </div>
+    <div class="filterDiv cosmos">
+<a class="posts" id="">
+      <h4>16 Psyche </h4>
+      One of the most intriguing targets in the main asteroid belt, 16 Psyche is a giant metal asteroid, about three times farther away from the Sun than is the Earth. Its average diameter is about 140 miles (226 kilometre) – about one-sixteenth the diameter of Earth’s Moon or about the distance between Los Angeles and San Diego. Unlike most other asteroids that are rocky or icy bodies, scientists think the M-type (metallic) asteroid 16 Psyche is comprised mostly of metallic iron and nickel similar to Earth’s core. 
+    <div class="footnotes"><div onclick="filterSelection('culture')">#M-type</div></div>
+ </a>
+    </div>
+    <div class="filterDiv tech">
+<a class="posts" id="">
+      <h4>3D printing</h4>
+      3D printing, also called additive manufacturing, is a family of processes that produces objects by adding material in layers that correspond to successive cross-sections of a 3D model. Plastics and metal alloys are the most commonly used materials for 3D printing, but it can work on nearly anything from concrete to living tissue. 
+      <div class="footnotes"></div>
+ </a>
+    </div>
+    <div class="filterDiv species" style="display: none;">
+<a class="posts" id="">
+      <h4>Caridina Ravisankarani</h4>
+      Caridina Ravisankarani, a new shrimp species, discovered in India
+
+A new species of shrimp has been discovered in the Island of Andaman and Nicobar. The species, Caridina Ravisankarani was first collected in June and November 2018 and January 2019 from a limestone cave (CN2) on Interview Island, Andaman, and the Nicobar Islands.
+
+Caridina Ravisankarani
+
+Caridina Ravisankarani is a cave-adapted species and is closely related to Caridina typus H. Milne Edwards, Caridina villadolidi Blanco, and Caridina jeani Cai. However, on analysis, it was found to possess specific characters of its own and distinctly differs from C. typus, which makes it a new species. Caridina Ravisankarani is also the first report of atyid shrimps from the cave.
+
+The species has been named after renowned ornithologist and conservation biologist Dr. Ravi Sankaran, who pioneered cave studies in the Andaman and Nicobar Islands.
+
+Features
+
+Caridina Ravisankarani can be identified through its short rostrum (a beaklike projection) with an edentulous upper margin and ventral margin. It has two-minute teeth situated at the distal part; outer antennular flagellum with 16 segments at the basal part swollen. It also has highly reduced pigmentation of the eyes.
+
+Furthermore, both the male and female species are entirely translucent, with mild yellowish spots overall, more on carapace (hard upper shell). When the species were collected during June and December -January, the deep and shallow pools in the cave, it was found that the females had as many as 1300 eggs. The shrimps were found under rocks, boulders, and crevices in the pools.
+
+The newly discovered shrimp species are also photophobic, as they quickly darted in the opposite direction when exposed to the light source. These were collected from a stream, sourced through the percolation of rainwater, which reduces during the post-monsoon months.
+
+India: Second largest fish producer
+
+India is equipped with vast aquatic resources, rich in diverse fish fauna. In India, around 2,200 species of fish are found, which accounts for about 11% of all the fish species reported globally. With a coastline of over 8,000 Kms, 2.02 Million Sq. Km. of Exclusive Economic Zone, 0.5 Million Sq. Km of continental shelf area, India is estimated to have exploitable fisheries resources of 3.9 million metric tons of which only about 3.0 million metric tons are presently exploited.
+
+Further, India is the second-largest fish producer in the world with a production of 13.70 million metric tons of fish during 2018-19. In 2017-18, fish constituted about 10% of total exports from India and almost 20% of agriculture exports. With export earnings of US $7 Billion, India is also the 4th largest exporter of fish in the world.
+
+Since over 16% of animal protein supplies originate from the fisheries sector, the sector is also identified as a major factor contributing to food security.
+
+Importance of shrimps
+
+Nutritional Value: Shrimps are a great source of dietary protein. They are also rich in calcium, iron, zinc, iodine, magnesium, phosphorus, copper and also contain important essential amino acids such as Isoleucine, Leucine, Lysine, Methionine, and more.
+
+Employment & export opportunities: Apart from exporting marine products worth more than Rs.47,600 crore, the sector in India also provides employment opportunities to more than 14.5 million people, residing in remote villages of the Indian coast. The discovery of new shrimp species means livelihood opportunities for the locals in the coastal and island communities.
+
+Scope for more species
+
+The discovery of new species could also mean the possiblity of finding more species new to science. During the discovery, scientists also encountered other shrimps and amphipods which are being studied and identified.
+
+Earlier in 2020, four new shrimp species were found in the Indian coral reef in the Lakshadweep islands.
+      <div class="footnotes">#3D #additive_manufacturing</div>
+ </a>
+    </div>
+
+    </div></div>
+
+    
+<footer style="font-size: 9px; color: navy; display:flex; bottom: 0; position:fixed; text-align: center; margin-top:;">Content updated by Zeboo<button class="logo" id="tme" style="float: right;font-family: monospace; font-size: 9px; border: none; color:navy; background-color:transparent; display:; padding-left: 5px; float:;"></button></footer>
+    
+<script>
+filterSelection("all")
+function filterSelection(c) {
+  var x, i;
+  x = document.getElementsByClassName("filterDiv");
+  if (c == "all") c = "";
+  for (i = 0; i < x.length; i++) {
+    w3RemoveClass(x[i], "show");
+    if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
+  }
+}
+
+function w3AddClass(element, name) {
+  var i, arr1, arr2;
+  arr1 = element.className.split(" ");
+  arr2 = name.split(" ");
+  for (i = 0; i < arr2.length; i++) {
+    if (arr1.indexOf(arr2[i]) == -1) {element.className += " " + arr2[i];}
+  }
+}
+
+function w3RemoveClass(element, name) {
+  var i, arr1, arr2;
+  arr1 = element.className.split(" ");
+  arr2 = name.split(" ");
+  for (i = 0; i < arr2.length; i++) {
+    while (arr1.indexOf(arr2[i]) > -1) {
+      arr1.splice(arr1.indexOf(arr2[i]), 1);     
+    }
+  }
+  element.className = arr1.join(" ");
+}
+
+// Add active class to the current button (highlight it)
+var btnContainer = document.getElementById("myBtnContainer");
+var btns = btnContainer.getElementsByClassName("btn");
+for (var i = 0; i < btns.length; i++) {
+  btns[i].addEventListener("click", function(){
+    var current = document.getElementsByClassName("active");
+    current[0].className = current[0].className.replace(" active", "");
+    this.className += " active";
+  });
+}
+
+function filterFunction() {
+  var input, filter, ul, li, a, i;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  div = document.getElementById("myDropdown");
+  a = div.getElementsByTagName("a");
+  for (i = 0; i < a.length; i++) {
+    txtValue = a[i].textContent || a[i].innerText;
+    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+      a[i].style.display = "";
+    } else {
+      a[i].style.display = "none";
+    }
+  }
+}
+    //Get the button
+var mybutton = document.getElementById("myBtn");
+
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
+function startTime() {
+  const today = new Date();
+  let h = today.getHours();
+  let m = today.getMinutes();
+  let s = today.getSeconds();
+  m = checkTime(m);
+  s = checkTime(s);
+  document.getElementById('tme').innerHTML =  h + ":" + m + ":" + s;
+  setTimeout(startTime, 1000);
+}
+
+function checkTime(i) {
+  if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+  return i;
+}
+
+</script>
+
+</body>
+</html>
+    
+        
